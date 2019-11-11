@@ -1,0 +1,40 @@
+DROP DATABASE IF EXISTS OpenSource; 
+
+CREATE DATABASE OpenSource default character set euckr collate euckr_korean_ci ; 
+
+ use myService; 
+
+ create table  account_info(
+ mem_seq int(11) not null auto_increment,  
+ id varchar(30),  
+ pwd varchar(40),  
+ name varchar(10),  
+ birth_date int(8),  
+ PRIMARY KEY(mem_seq),
+ index(id)
+ ) ENGINE=InnoDB default character set utf8 collate utf8_general_ci;
+ 
+ set names euckr;
+ 
+ alter table account_info add image varchar(255) default './images/dafault_img.jpg';
+ 
+create table board( 
+  bod_seq int(11) unsigned NOT NULL AUTO_INCREMENT,
+  subject varchar(255) NOT NULL,
+  content varchar(5000),
+  datetime int(20),
+  mem_seq int(1) unsigned NOT NULL,
+  name varchar(32) NOT NULL, 
+  PRIMARY KEY (bod_seq)
+) ENGINE=InnoDB default character set utf8 collate utf8_general_ci;
+
+create table comment(
+	com_seq int(11) not null auto_increment,
+	content varchar(255) not null,
+	mem_seq int(11),
+	bod_seq int(11)
+	PRIMARY KEY (com_seq)
+	}ENGINE=InnoDB default character set utf8 collate utf8_general_ci;
+
+
+ 
